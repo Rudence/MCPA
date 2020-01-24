@@ -7,7 +7,7 @@ clc
 q = 1.602e-19; % electon elementary charge
 m = 9.1e-27; % electron mass in Kg
 
-e_number = 4;
+e_number = 10;
 xposition = [zeros(e_number,1)];
 new_xpos = [zeros(e_number,1)];
 xvelocity = [zeros(e_number,1)];
@@ -32,18 +32,18 @@ for time = 0:delt:t
     xvelocity = xvelocity + (force*time)/m;
     new_xpos = xposition + t*xvelocity;
     
-    a = rand(e_number,1);
+    a = 
 %     if a < 0.05
 %         xvelocity = 0
 %     end
-    for index = 1:e_number
+    for index = 1:e_num
+        a
         if a(index) < 0.1 
-            xvelocity(index) = 0; % -xvelocity;
+            xvelocity = 0; % -xvelocity;
         end
     end
     
     driftVel = (new_xpos-xposition)./delt
-    drift = mean(driftVel);
     xposition = new_xpos;
     
     
@@ -58,9 +58,9 @@ for time = 0:delt:t
     subplot(2,1,2)
     scatter(time*ones(e_number,1), xvelocity,'bo')
     grid on
-    string = ['Drift Velocity = ', num2str(drift)];
-    title(string)
-    %title('Velocity Over Time')
+    %string = ['Drift Velocity = ', num2str(driftVel)];
+    %title(string)
+    title('Velocity Over Time')
     xlabel('Time')
     ylabel('Velocity')
     hold on
